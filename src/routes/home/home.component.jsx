@@ -3,15 +3,15 @@ import Directory from '../../components/directory/directory.component.jsx';
 
 const Home = () => {
 
-  const categories = [
+  const Branches = [
     {
       "id": 1,
-      "title": "hats",
+      "title": "Wensday",
       "imageUrl": "https://i.ibb.co/cvpntL1/hats.png"
     },
     {
       "id": 2,
-      "title": "jackets",
+      "title": "Whensday",
       "imageUrl": "https://i.ibb.co/px2tCc3/jackets.png"
     },
     {
@@ -31,10 +31,28 @@ const Home = () => {
     }
   ];
 
+  // const BranchContent = [
+  //   {
+  //     "id": 1,
+  //     "title": "Media",
+  //     "imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
+  //   },
+  //   {
+  //     "id": 2,
+  //     "title": "Merch",
+  //     "imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
+  //   },
+  //   {
+  //     "id": 3,
+  //     "title": "mens",
+  //     "imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
+  //   }
+  // ];
+
   return (
     <div>
         <Outlet />
-        <Directory categories={categories} />
+        <Directory categories={Branches} />
     </div>
 );
 

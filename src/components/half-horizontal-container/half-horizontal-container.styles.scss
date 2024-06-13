@@ -1,0 +1,77 @@
+$golden-ratio: 1.618;
+
+.half-horizontal-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: calc(100vh - var(--navbar-height)); // Height includes both large and small containers -> IS REMOVING THE NAVBAR HEIGHT
+    box-sizing: border-box; // Ensure padding and border are included in the element's total width and height
+
+
+    .gr-large-half-width-container {
+    width: 100%;
+    height: calc(100% / #{$golden-ratio}); // Use viewport height to ensure it renders correctly
+    background-color: lightgrey; // Fallback color if no image is present
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-start; // Align items to the top
+    justify-content: flex-start; // Align items to the left
+    position: relative;
+    border: 1px solid white;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.25); // Add a drop shadow to the container
+    box-sizing: border-box;
+
+    .gr-large-half-width-container-text {
+        position: absolute;
+        top: 0px;
+        left: 40px;
+        font-size: 80px; // Font size 100
+        mix-blend-mode: difference;
+        color: white; // White color for the text
+
+        h1 {
+            margin: 0; // Remove any default margin
+            padding: 0; // Remove any default padding
+        }
+    }
+    }
+
+    .gr-small-half-width-container {
+        display: flex;
+        width: 100%;
+        height: calc(100% - (100% / #{$golden-ratio})); // Remaining height for the small containers
+    
+        .gr-small-half-width-third {
+          width: calc(100% / 3); // Each small container takes up one-third of the half-width
+          height: 100%; // Full height of the small container area
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          border: 1px solid white;
+          opacity: 70%;
+          box-sizing: border-box;
+    
+          .gr-small-half-width-third-text {
+            transform: rotate(90deg); // Rotate the text 90 degrees
+            font-size: 30px; // Font size 50
+            color: white;
+    
+            h1 {
+                margin: 0; // Remove any default margin
+                padding: 0; // Remove any default padding
+            }
+          }
+        }
+    }
+
+    .wensday-container {
+        background-color: violet;
+    }
+    
+    .whensday-container {
+        background-color: purple;
+    }
+
+}

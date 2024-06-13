@@ -1,0 +1,36 @@
+:root {
+  --navbar-height: 65px; // Adjust this value to your actual navbar height
+}
+
+.NavBar {
+    width: 100%;
+    height: var(--navbar-height);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    background-color: blueviolet;
+    // Ensures the NavBar sits at the top of the page and items are vertically centered
+    z-index: 1000;
+    padding: 0 10px;
+    justify-content: left; // Ensure items are spaced evenly across the NavBar
+  
+  
+    .NavIcon {
+      width: 50px;
+      height: 50px;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      margin-right: 10px;
+      // Sits the NavIcon 10px away from the left edge of the page
+    }
+  
+    .NavText {
+      width: 50px;
+      margin-left: 20px; // Add space between text items
+      display: flex;
+      align-items: center;
+      // Vertically centers the NavText items and spaces them equally
+    }
+  }
