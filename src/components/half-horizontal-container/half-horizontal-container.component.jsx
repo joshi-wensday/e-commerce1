@@ -7,7 +7,7 @@ const HalfHorizontalContainer = ({ id, classNameClassifiers, text }) => {
     return (
     <div key="id" className="half-horizontal-container">
         <div className={`gr-large-half-width-container ${large}`}>
-            <div className="gr-large-half-width-container-text">
+            <div className="gr-large-half-width-container-text main-content">
             <h1>{titleBranch}</h1>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Directory from '../../components/directory/directory.component.jsx';
 
-const Home = () => {
+const TestCategories = () => {
 
   const Branches = [
     {
@@ -58,4 +58,4 @@ const Home = () => {
 
 }
 
-export default Home;
+export default TestCategories;

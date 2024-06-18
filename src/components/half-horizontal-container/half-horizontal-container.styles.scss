@@ -4,7 +4,7 @@ $golden-ratio: 1.618;
     display: flex;
     flex-direction: column;
     width: 50%;
-    height: calc(100vh - var(--navbar-height)); // Height includes both large and small containers -> IS REMOVING THE NAVBAR HEIGHT
+    height: 100vh; // Height includes both large and small containers -> IS REMOVING THE NAVBAR HEIGHT
     box-sizing: border-box; // Ensure padding and border are included in the element's total width and height
 
 
@@ -23,8 +23,8 @@ $golden-ratio: 1.618;
     box-sizing: border-box;
 
     .gr-large-half-width-container-text {
-        position: absolute;
-        top: 0px;
+        position: relative;
+        top: -40px;
         left: 40px;
         font-size: 80px; // Font size 100
         mix-blend-mode: difference;

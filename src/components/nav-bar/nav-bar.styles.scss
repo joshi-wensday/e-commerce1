@@ -9,7 +9,7 @@
     top: 0;
     display: flex;
     align-items: center;
-    background-color: blueviolet;
+    background-color: transparent;
     // Ensures the NavBar sits at the top of the page and items are vertically centered
     z-index: 1000;
     padding: 0 10px;
@@ -25,12 +25,20 @@
       margin-right: 10px;
       // Sits the NavIcon 10px away from the left edge of the page
     }
-  
-    .NavText {
-      width: 50px;
-      margin-left: 20px; // Add space between text items
-      display: flex;
-      align-items: center;
-      // Vertically centers the NavText items and spaces them equally
+
+    .links-container {
+      display: flex; // Ensure links are aligned horizontally
+      align-items: center; // Vertically center the NavText items
+
+      .NavText {
+        margin-left: 40px; // Add space between text items
+        display: flex;
+        align-items: center;
+        // Vertically centers the NavText items and spaces them equally
+        color: white; // Example text color
+        text-decoration: none;
+        font-size: 20px;
+      }
     }
+  
   }

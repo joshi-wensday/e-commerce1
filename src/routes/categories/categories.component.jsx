@@ -1,6 +1,6 @@
 import HalfHorizontalContainer from "../../components/half-horizontal-container/half-horizontal-container.component";
 
-import './shop.styles.scss'
+import './categories.styles.scss'
 
 const Shop = () => {
   const containers = [
@@ -21,11 +21,11 @@ const Shop = () => {
       {containers.map((container) => {
         const { id, classNameClassifiers, text } = container;
         return (
-          <HalfHorizontalContainer
-            key={id}
-            classNameClassifiers={classNameClassifiers}
-            text={text}
-          />
+            <HalfHorizontalContainer
+              key={id}
+              classNameClassifiers={classNameClassifiers}
+              text={text}
+            />
         );
       })}
     </div>
