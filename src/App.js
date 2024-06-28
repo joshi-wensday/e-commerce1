@@ -15,6 +15,7 @@ const App = () => {
         <Route index={true} element={<Categories />}/>
         <Route path="test-categories" element={<TestCategories />}/>
         <Route path="sign-in" element={<SignIn />}/>
+        <Route path="contact" element={<SignIn />}/>
       </Route>
     </Routes>
   );
