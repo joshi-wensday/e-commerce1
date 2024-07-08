@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import './nav-bar.styles.scss';
 import { ReactComponent as YinYangLogo } from '../../assets/images/nav-icon.svg';
 
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/user.context.jsx';
+
 const NavBar = () => {
+    const { currentUser } = useContext(UserContext);
     return (
       <div className='NavBar'> 
         <Link to="/" >
@@ -11,7 +15,13 @@ const NavBar = () => {
         </Link>
         <div className='links-container'>
           <Link to="/test-categories" className='NavText'>Test Categories</Link>
-          <Link to="/auth" className='NavText'>Sign In</Link>
+          {
+            currentUser 
+            ? 
+            <span className='NavText'>SIGN OUT NOOOB</span>
+            :
+            <Link to="/auth" className='NavText'>Sign In</Link>
+          }
           <Link to="/contact" className='NavText'>-Contact-</Link>
         </div>
       </div>

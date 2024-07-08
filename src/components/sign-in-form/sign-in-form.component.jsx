@@ -6,8 +6,10 @@ import {
     signInAuthUserWithEmailAndPassword
 } from '../../utils/firebase/firebase.utils.js';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getRedirectResult } from 'firebase/auth';
+
+import { UserContext } from '../../contexts/user.context.jsx';
 
 import Button from '../button/button.component.jsx';
 import FormInput from '../form-input/form-input.component.jsx';
@@ -22,6 +24,8 @@ const defaultFormFields = {
 const SignIn = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
+
+    const { setCurrentUser } = useContext(UserContext);
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -55,8 +59,8 @@ const SignIn = () => {
         event.preventDefault();
 
         try {
-            const response = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log(response);
+            const {user} = await signInAuthUserWithEmailAndPassword(email, password);
+            setCurrentUser(user);
             alert("Sign-in successful");
             resetFormFields();
         } catch (error) {
