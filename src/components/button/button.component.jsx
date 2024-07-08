@@ -17,9 +17,9 @@ const BUTTON_TYPE_CLASSES = {
     google: 'google-sign-in',
 };
 
-const Button = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, extraStyles, ...otherProps }) => {
     return (
-        <button className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`} { ...otherProps}>
+        <button className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]} ${extraStyles}`} { ...otherProps}>
             { children }
         </button>
     );

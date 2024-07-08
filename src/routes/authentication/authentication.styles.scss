@@ -1,0 +1,23 @@
+.authentication-container {
+    background-color: rgb(203, 195, 227);
+    height: 100vh;
+    width: auto;
+
+    h1 {
+        text-align: center;
+        margin: 0; /* Remove default margin */
+        padding-top: 12px; /* Add padding if you want spacing */    
+    }
+
+    .sign-in-page-container {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+
+        .sign-in-options-container {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+        }
+    }
+}
