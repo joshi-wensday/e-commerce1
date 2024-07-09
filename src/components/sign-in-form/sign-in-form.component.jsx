@@ -6,10 +6,8 @@ import {
     signInAuthUserWithEmailAndPassword
 } from '../../utils/firebase/firebase.utils.js';
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { getRedirectResult } from 'firebase/auth';
-
-import { UserContext } from '../../contexts/user.context.jsx';
 
 import Button from '../button/button.component.jsx';
 import FormInput from '../form-input/form-input.component.jsx';
@@ -25,8 +23,6 @@ const SignIn = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
-    const { setCurrentUser } = useContext(UserContext);
-
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     };
@@ -34,11 +30,10 @@ const SignIn = () => {
     // On page load effect -> fetch googleRedirectLogInData
     useEffect( () => {
         const fetchRedirectData = async () => {
-        const response = await getRedirectResult(auth);
-        
-        if (response) {
-            const userDocRef = createUserDocumentFromAuth(response.user);
-        }
+            const response = await getRedirectResult(auth);
+            if (response) {
+                const userDocRef = createUserDocumentFromAuth(response.user);
+            }
         };
 
         fetchRedirectData();
@@ -46,8 +41,7 @@ const SignIn = () => {
 
     // function to check/create a user document based on google Pop Up sign in.
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        await signInWithGooglePopup();
     }
 
     const handleInputChange = (event) => {
@@ -60,7 +54,6 @@ const SignIn = () => {
 
         try {
             const {user} = await signInAuthUserWithEmailAndPassword(email, password);
-            setCurrentUser(user);
             alert("Sign-in successful");
             resetFormFields();
         } catch (error) {

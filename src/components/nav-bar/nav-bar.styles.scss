@@ -38,6 +38,16 @@
         color: white; // Example text color
         text-decoration: none;
         font-size: 20px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .SignOut:hover {
+        cursor: grabbing; /* Change cursor to grabbing on hover */
+      }
+      
+      .SignOut:active {
+        cursor: grab; /* Change cursor to grab when clicked */
       }
     }
   

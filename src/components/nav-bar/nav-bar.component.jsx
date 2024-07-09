@@ -6,8 +6,11 @@ import { ReactComponent as YinYangLogo } from '../../assets/images/nav-icon.svg'
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/user.context.jsx';
 
+import { signOutUser } from '../../utils/firebase/firebase.utils.js';
+
 const NavBar = () => {
     const { currentUser } = useContext(UserContext);
+
     return (
       <div className='NavBar'> 
         <Link to="/" >
@@ -18,7 +21,7 @@ const NavBar = () => {
           {
             currentUser 
             ? 
-            <span className='NavText'>SIGN OUT NOOOB</span>
+            <span className='NavText SignOut' onClick={signOutUser}>SIGN OUT NOOOB</span>
             :
             <Link to="/auth" className='NavText'>Sign In</Link>
           }
