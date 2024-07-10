@@ -42,11 +42,16 @@ const SignUpForm = () => {
                 throw new Error('User creation failed');
             }
         } catch (error) {
-            if (error.code==='auth/email-already-in-use') {
-                alert("Email already in use");
-            } else {
-                console.log("User creation encountered an error", error);
-                alert("An error occurred during sign up. Please try again.");
+            switch (error.code) {
+                case 'auth/email-already-in-use':
+                    alert("Email already in use");
+                    break;
+                case 'auth/weak-password':
+                    alert("Password is too weak. Please use a stronger password with at least 6 character.");
+                    break;
+                default:
+                    console.log("User creation encountered an error", error);
+                    alert("An error occurred during sign up. Please try again.");
             }
         };
     };

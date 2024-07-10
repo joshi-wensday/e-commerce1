@@ -53,7 +53,7 @@ const SignIn = () => {
         event.preventDefault();
 
         try {
-            const {user} = await signInAuthUserWithEmailAndPassword(email, password);
+            await signInAuthUserWithEmailAndPassword(email, password);
             alert("Sign-in successful");
             resetFormFields();
         } catch (error) {
