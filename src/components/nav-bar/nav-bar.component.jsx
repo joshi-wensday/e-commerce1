@@ -9,6 +9,7 @@ import { UserContext } from '../../contexts/user.context.jsx';
 import { signOutUser } from '../../utils/firebase/firebase.utils.js';
 
 import CartIcon from '../cart-icon/cart-icon.component.jsx';
+import CartDropdown from "../cart-dropdown/cart-dropdown.component.jsx";
 
 const NavBar = () => {
     const { currentUser } = useContext(UserContext);
@@ -30,6 +31,7 @@ const NavBar = () => {
           <Link to="/shop" className='NavText'>Shop</Link>
           <CartIcon />
         </div>
+        <CartDropdown />
       </div>
     );
 };

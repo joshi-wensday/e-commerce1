@@ -30,6 +30,12 @@
       display: flex; // Ensure links are aligned horizontally
       align-items: center; // Vertically center the NavText items
 
+      .cart-icon-container {
+        margin-left: 40px; // Add space before the cart icon
+        display: flex; // Ensure the container is using flexbox
+        align-items: center; // Center the icon vertically
+      }
+
       .NavText {
         margin-left: 40px; // Add space between text items
         display: flex;
