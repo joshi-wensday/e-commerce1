@@ -5,6 +5,7 @@ import { ReactComponent as YinYangLogo } from '../../assets/images/nav-icon.svg'
 
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/user.context.jsx';
+import { CartContext } from "../../contexts/cart.context.jsx";
 
 import { signOutUser } from '../../utils/firebase/firebase.utils.js';
 
@@ -13,6 +14,7 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component.jsx";
 
 const NavBar = () => {
     const { currentUser } = useContext(UserContext);
+    const { cartOpen } = useContext(CartContext);
 
     return (
       <div className='NavBar'> 
@@ -31,7 +33,7 @@ const NavBar = () => {
           <Link to="/shop" className='NavText'>Shop</Link>
           <CartIcon />
         </div>
-        <CartDropdown />
+        {cartOpen && <CartDropdown />}
       </div>
     );
 };
