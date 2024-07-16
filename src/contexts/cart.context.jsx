@@ -1,23 +1,44 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const CartContext = createContext({
     cartItems: [],
     setCartItems: () => null,
     cartOpen: false,
     setCartOpen: () => null,
+    cartCount: 0,
+    setCartCount: () => null,
 });
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
     const [cartOpen, setCartOpen] = useState(false);
+    const [cartCount, setCartCount] = useState(0);
 
     const toggleCartOpen = () => setCartOpen(!cartOpen);
+    const cartCountUpdate = () => cartItems.reduce((acc, cartItem) => acc + cartItem.quantity, 0);
+
+
+    const addItemToCart = (item) => {
+        // if item in cartItems, increment quantity
+        // else add item to cartItems
+        const existingCartItem = cartItems.find((cartItem) => cartItem.id === item.id);
+        if (existingCartItem) {
+            setCartItems(cartItems.map((cartItem) => cartItem.id === item.id ? {...cartItem, quantity: cartItem.quantity + 1} : cartItem));
+        } else {
+            setCartItems([...cartItems, {...item, quantity: 1}]);
+        }
+    };
+
+    useEffect(() => {
+        setCartCount(cartCountUpdate);
+    }, [cartItems]);
 
     const value = {
         cartItems,
-        setCartItems,
+        setCartItems: addItemToCart,
         cartOpen,
         setCartOpen: toggleCartOpen,
+        cartCount,
     };
 
     return (

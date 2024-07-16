@@ -20,16 +20,4 @@
         margin: 50px auto;
     }
 
-    .cart-items {
-        height: 240px;
-        display: flex;
-        flex-direction: column;
-        overflow: scroll;
-        // -ms-overflow-style: none;  /* Internet Explorer 10+ */
-        // scrollbar-width: none;  /* Firefox */
-    }
-
-    button {
-        margin-top: auto;
-    }
 }
