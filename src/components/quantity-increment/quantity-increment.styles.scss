@@ -1,0 +1,34 @@
+.quantity-increment .decrement::before, .quantity-increment .increment::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.quantity-increment .decrement::before {
+    border-width: 5px 7px 5px 0;
+    border-color: transparent #000 transparent transparent;
+}
+
+.quantity-increment .increment::before {
+    border-width: 5px 0 5px 7px;
+    border-color: transparent transparent transparent #000;
+}
+
+
+.quantity-increment {
+    display: flex;
+    align-items: center;
+
+    .decrement, .increment {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .quantity {
+        margin: 0 10px;
+    }
+}

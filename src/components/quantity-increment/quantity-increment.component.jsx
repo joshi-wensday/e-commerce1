@@ -17,9 +17,9 @@ const QuantityIncrement = ({ item }) => {
 
     return (
         <div className='quantity-increment'>
-            <button className='decrement' onClick={CartDecrement}>-</button>
+            <button className='decrement' onClick={CartDecrement}></button>
             <span className='quantity'>{quantity}</span>
-            <button className='increment' onClick={CartIncrement}>+</button>
+            <button className='increment' onClick={CartIncrement}></button>
         </div>
     );
 };
