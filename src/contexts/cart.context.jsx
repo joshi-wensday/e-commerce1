@@ -7,7 +7,11 @@ export const CartContext = createContext({
     setCartOpen: () => null,
     cartCount: 0,
     setCartCount: () => null,
+    addItemToCart: () => null,
+    modifyCartItemQuantity: () => null,
 });
+
+
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
@@ -17,13 +21,24 @@ export const CartProvider = ({ children }) => {
     const toggleCartOpen = () => setCartOpen(!cartOpen);
     const cartCountUpdate = () => cartItems.reduce((acc, cartItem) => acc + cartItem.quantity, 0);
 
+    const existingCartItem = (itemToAdd) => {
+        return cartItems.find((cartItem) => cartItem.id === itemToAdd.id);
+    };
+
+    const modifyCartItemQuantity = (itemToAdd, quantityChange) => {
+        setCartItems(cartItems.map((cartItem) => 
+            cartItem.id === itemToAdd.id 
+                ? {...cartItem, quantity: cartItem.quantity + quantityChange} 
+                : cartItem
+        ));
+    };
 
     const addItemToCart = (item) => {
         // if item in cartItems, increment quantity
         // else add item to cartItems
-        const existingCartItem = cartItems.find((cartItem) => cartItem.id === item.id);
-        if (existingCartItem) {
-            setCartItems(cartItems.map((cartItem) => cartItem.id === item.id ? {...cartItem, quantity: cartItem.quantity + 1} : cartItem));
+        const isExistingCartItem = existingCartItem(item);
+        if (isExistingCartItem) {
+            setCartItems(modifyCartItemQuantity( item, 1));
         } else {
             setCartItems([...cartItems, {...item, quantity: 1}]);
         }
@@ -35,10 +50,12 @@ export const CartProvider = ({ children }) => {
 
     const value = {
         cartItems,
-        setCartItems: addItemToCart,
+        addItemToCart,
         cartOpen,
         setCartOpen: toggleCartOpen,
         cartCount,
+        setCartCount,
+        modifyCartItemQuantity,
     };
 
     return (
