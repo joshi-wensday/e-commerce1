@@ -9,6 +9,7 @@ export const CartContext = createContext({
     setCartCount: () => null,
     addItemToCart: () => null,
     modifyCartItemQuantity: () => null,
+    removeItemFromCart: () => null,
 });
 
 
@@ -19,33 +20,45 @@ export const CartProvider = ({ children }) => {
     const [cartCount, setCartCount] = useState(0);
 
     const toggleCartOpen = () => setCartOpen(!cartOpen);
-    const cartCountUpdate = () => cartItems.reduce((acc, cartItem) => acc + cartItem.quantity, 0);
 
     const existingCartItem = (itemToAdd) => {
         return cartItems.find((cartItem) => cartItem.id === itemToAdd.id);
     };
 
-    const modifyCartItemQuantity = (itemToAdd, quantityChange) => {
-        setCartItems(cartItems.map((cartItem) => 
-            cartItem.id === itemToAdd.id 
-                ? {...cartItem, quantity: cartItem.quantity + quantityChange} 
-                : cartItem
-        ));
+    const removeItemFromCart = (itemToRemove) => {
+        setCartItems((prevCartItems) => 
+            prevCartItems.filter((cartItem) => cartItem.id !== itemToRemove.id)
+        );
+    };
+
+    const modifyCartItemQuantity = (itemToModify, quantityChange) => {
+        setCartItems((prevCartItems) => 
+            prevCartItems.map((cartItem) => {
+                if (cartItem.id === itemToModify.id) {
+                    const newQuantity = cartItem.quantity + quantityChange;
+                    if (newQuantity <= 0) {
+                        removeItemFromCart(itemToModify);
+                        return null; // This will be filtered out
+                    }
+                    return {...cartItem, quantity: newQuantity};
+                }
+                return cartItem;
+            }).filter(Boolean) // Remove null values
+        );
     };
 
     const addItemToCart = (item) => {
-        // if item in cartItems, increment quantity
-        // else add item to cartItems
         const isExistingCartItem = existingCartItem(item);
         if (isExistingCartItem) {
-            setCartItems(modifyCartItemQuantity( item, 1));
+            modifyCartItemQuantity(item, 1);
         } else {
-            setCartItems([...cartItems, {...item, quantity: 1}]);
+            setCartItems((prevCartItems) => [...prevCartItems, {...item, quantity: 1}]);
         }
     };
 
     useEffect(() => {
-        setCartCount(cartCountUpdate);
+        const newCartCount = cartItems.reduce((acc, cartItem) => acc + cartItem.quantity, 0);
+        setCartCount(newCartCount);
     }, [cartItems]);
 
     const value = {
@@ -56,6 +69,7 @@ export const CartProvider = ({ children }) => {
         cartCount,
         setCartCount,
         modifyCartItemQuantity,
+        removeItemFromCart,
     };
 
     return (
