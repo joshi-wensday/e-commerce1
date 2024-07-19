@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import './nav-bar.styles.scss';
 import { ReactComponent as YinYangLogo } from '../../assets/images/nav-icon.svg';
@@ -15,9 +15,11 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component.jsx";
 const NavBar = () => {
     const { currentUser } = useContext(UserContext);
     const { cartOpen } = useContext(CartContext);
+    const location = useLocation();
+    const isShopPage = ['/checkout', '/shop', '/test-categories'].includes(location.pathname);
 
     return (
-      <div className='NavBar'> 
+      <div className={`NavBar ${isShopPage ? 'shop-page' : ''}`}> 
         <Link to="/" >
           <YinYangLogo className='Logo' />
         </Link>

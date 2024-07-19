@@ -26,12 +26,14 @@
       // Sits the NavIcon 10px away from the left edge of the page
     }
 
+
     .links-container {
       display: flex; // Ensure links are aligned horizontally
       align-items: center; // Vertically center the NavText items
 
       .cart-icon-container {
-        margin-left: 40px; // Add space before the cart icon
+        position: absolute; // Position it absolutely within the NavBar
+        right: 40px; // 40px from the right edge of the page
         display: flex; // Ensure the container is using flexbox
         align-items: center; // Center the icon vertically
       }
@@ -56,6 +58,9 @@
         cursor: grab; /* Change cursor to grab when clicked */
       }
     }
-  
+}
 
-  }
+.shop-page.NavBar {
+    background-color: rgba(128, 0, 128, 0.5); /* Purple background with transparency */
+    backdrop-filter: blur(10px); /* Background blur effect */
+}

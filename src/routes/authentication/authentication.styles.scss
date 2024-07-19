@@ -6,7 +6,7 @@
     h1 {
         text-align: center;
         margin: 0; /* Remove default margin */
-        padding-top: 12px; /* Add padding if you want spacing */    
+        padding-top: var(--navbar-height); /* Add padding if you want spacing */    
     }
 
     .sign-in-page-container {

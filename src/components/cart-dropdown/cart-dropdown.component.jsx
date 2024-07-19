@@ -10,8 +10,14 @@ import Button from '../button/button.component'
 import CartItem from '../cart-item/cart-item.component';
 
 const CartDropdown = () => {
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, setCartOpen } = useContext(CartContext);
+
     const navigate = useNavigate();
+    const goToCheckoutHandler = () => {
+        navigate('/checkout')
+        setCartOpen(false);
+    };
+
     return (
         <div className='cart-dropdown-container'>
             <div className='cart-items-container'>
@@ -23,7 +29,7 @@ const CartDropdown = () => {
                     <span className='empty-message'>Your cart is empty</span>
                 )}
             </div>
-            <Button buttonType='default' onClick={() => navigate('/checkout')}>
+            <Button buttonType='default' onClick={goToCheckoutHandler}>
                 Check Out
             </Button>
         </div>

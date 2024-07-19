@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../contexts/cart.context';
 
 const CheckoutTableRow = ({ item, rowValue }) => {
-    const { id, imageUrl, name, quantity, price } = item;
+    const { id, imageUrl, name, price } = item;
     const { removeItemFromCart } = useContext(CartContext);
 
     const handleRemoveItem = (item) => () => {

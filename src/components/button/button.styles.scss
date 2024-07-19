@@ -39,6 +39,12 @@
         border: none;
       }
     }
+
+    &.add-to-cart-button {
+      font-size: 12px;
+      min-width: 100px;
+      padding: 0 15px 0 15px;
+    }
   
     &.inverted {
       background-color: white;
