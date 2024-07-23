@@ -16,7 +16,7 @@ const NavBar = () => {
     const { currentUser } = useContext(UserContext);
     const { cartOpen } = useContext(CartContext);
     const location = useLocation();
-    const isShopPage = ['/checkout', '/shop', '/test-categories'].includes(location.pathname);
+    const isShopPage = ['/checkout', '/test-categories'].includes(location.pathname) || location.pathname.startsWith('/shop');
 
     return (
       <div className={`NavBar ${isShopPage ? 'shop-page' : ''}`}> 

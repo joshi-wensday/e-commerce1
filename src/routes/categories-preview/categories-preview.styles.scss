@@ -1,0 +1,11 @@
+.categories-container {
+    padding: 20px 40px;
+
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        column-gap: 25px;
+        row-gap: 50px;
+    }
+
+}
